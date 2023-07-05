@@ -1,0 +1,20 @@
+name: Create Branch
+on:
+  issues:
+    types:
+      - assigned
+
+jobs:
+  create-branch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create branch
+        uses: marocchino/create-branch@v0.4.0
+        with:
+          branch: develop
+          branch-suffix: ${{ github.event.issue.number }}-${{ github.event.issue.title }}
+          delete-branch-on-close: false
