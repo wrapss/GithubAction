@@ -1,0 +1,16 @@
+name: Validate Commits
+on:
+  push:
+    branches:
+      - 'features/**'
+      - 'hotfix/**'
+
+jobs:
+  validate-commits:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Validate Commits
+        uses: "AmateurEvents/conventional-commits-action@v2"
